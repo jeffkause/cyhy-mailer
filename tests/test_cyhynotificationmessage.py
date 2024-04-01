@@ -43,15 +43,19 @@ class Test(unittest.TestCase):
             elif part.get_content_type() == "text/plain":
                 text_body = """Greetings FEDTEST,
 
-Cyber Hygiene scans of your host(s) conducted in the past day have detected one or both of the following:
-* New critical and/or high vulnerabilities
+Cyber Hygiene scans of your host(s) conducted in the past day have detected one or more of the following:
+* New critical, high, and/or known exploited vulnerabilities
 * New potentially risky services
 
 As part of BOD 19-02, critical findings need to be remediated within 15 days and high findings remediated within 30 days.
 
-CISA also recommends reviewing hosts with potentially risky open services (e.g. RDP, Telnet, etc.) to ensure that each service is intended to be available to the public and, where applicable, the service is up-to-date on the latest version, correctly configured, and uses strong authentication.
+As part of BOD 22-01, any "known exploited" findings, regardless of severity, need to be remediated within two weeks.
 
-The details are in the attached PDF, which has the same password as your Cyber Hygiene report.
+CISA also recommends reviewing hosts with potentially risky open services (e.g. RDP, Telnet, etc.), especially if they are functioning as networked management interfaces, to ensure that each service is intended to be available to the public and, where applicable, the service is up-to-date, correctly configured, and uses strong authentication.
+
+As part of BOD 23-02, networked management interfaces exposed to the public internet must either be removed from the internet by making it only accessible from an internal enterprise network or protected by capabilities that enforce access control to the interface through a policy enforcement point separate from the interface itself as part of a Zero Trust Architecture within 14 days.
+
+The details are in the attached PDF, which has the same password as your weekly Cyber Hygiene Vulnerability Scanning report.
 
 If you have any questions, please contact our office.
 
@@ -69,18 +73,22 @@ WARNING: This message and any attached document(s) is FOR OFFICIAL USE ONLY (FOU
 <body>
 <p>Greetings FEDTEST,</p>
 
-<p>Cyber Hygiene scans of your host(s) conducted in the past day have detected one or both of the following:
+<p>Cyber Hygiene scans of your host(s) conducted in the past day have detected one or more of the following:
 <ul>
-  <li>New critical and/or high vulnerabilities</li>
+  <li>New critical, high, and/or known exploited vulnerabilities</li>
   <li>New potentially risky services</li>
 </ul>
 </p>
 
-<p>As part of <a href="https://cyber.dhs.gov/bod/19-02/">BOD 19-02</a>, critical findings need to be remediated within 15 days and high findings remediated within 30 days.</p>
+<p>As part of <a href="https://www.cisa.gov/news-events/directives/bod-19-02-vulnerability-remediation-requirements-internet-accessible-systems">BOD 19-02</a>, critical findings need to be remediated within 15 days and high findings remediated within 30 days.</p>
 
-<p>CISA also recommends reviewing hosts with potentially risky open services (e.g. RDP, Telnet, etc.) to ensure that each service is intended to be available to the public and, where applicable, the service is up-to-date on the latest version, correctly configured, and uses strong authentication.</p>
+<p>As part of <a href="https://www.cisa.gov/news-events/directives/bod-22-01-reducing-significant-risk-known-exploited-vulnerabilities">BOD 22-01</a>, any "known exploited" findings, regardless of severity, need to be remediated within two weeks.</p>
 
-<p>The details are in the attached PDF, which has the same password as your Cyber Hygiene report.</p>
+<p>CISA also recommends reviewing hosts with potentially risky open services (e.g. RDP, Telnet, etc.), <em>especially if they are functioning as networked management interfaces</em>, to ensure that each service is intended to be available to the public and, where applicable, the service is up-to-date, correctly configured, and uses strong authentication.</p>
+
+<p>As part of <a href="https://www.cisa.gov/news-events/directives/binding-operational-directive-23-02">BOD 23-02</a>, networked management interfaces exposed to the public internet must either be removed from the internet by making it only accessible from an internal enterprise network or protected by capabilities that enforce access control to the interface through a policy enforcement point separate from the interface itself as part of a Zero Trust Architecture within 14 days.</p>
+
+<p>The details are in the attached PDF, which has the same password as your weekly Cyber Hygiene Vulnerability Scanning report.</p>
 
 <p>If you have any questions, please contact our office.</p>
 
@@ -128,15 +136,19 @@ Cybersecurity and Infrastructure Security Agency<br>
             elif part.get_content_type() == "text/plain":
                 body = """Greetings FEDTEST,
 
-Cyber Hygiene scans of your host(s) conducted in the past day have detected one or both of the following:
-* New critical and/or high vulnerabilities
+Cyber Hygiene scans of your host(s) conducted in the past day have detected one or more of the following:
+* New critical, high, and/or known exploited vulnerabilities
 * New potentially risky services
 
 As part of BOD 19-02, critical findings need to be remediated within 15 days and high findings remediated within 30 days.
 
-CISA also recommends reviewing hosts with potentially risky open services (e.g. RDP, Telnet, etc.) to ensure that each service is intended to be available to the public and, where applicable, the service is up-to-date on the latest version, correctly configured, and uses strong authentication.
+As part of BOD 22-01, any "known exploited" findings, regardless of severity, need to be remediated within two weeks.
 
-The details are in the attached PDF, which has the same password as your Cyber Hygiene report.
+CISA also recommends reviewing hosts with potentially risky open services (e.g. RDP, Telnet, etc.), especially if they are functioning as networked management interfaces, to ensure that each service is intended to be available to the public and, where applicable, the service is up-to-date, correctly configured, and uses strong authentication.
+
+As part of BOD 23-02, networked management interfaces exposed to the public internet must either be removed from the internet by making it only accessible from an internal enterprise network or protected by capabilities that enforce access control to the interface through a policy enforcement point separate from the interface itself as part of a Zero Trust Architecture within 14 days.
+
+The details are in the attached PDF, which has the same password as your weekly Cyber Hygiene Vulnerability Scanning report.
 
 If you have any questions, please contact our office.
 
@@ -154,18 +166,22 @@ WARNING: This message and any attached document(s) is FOR OFFICIAL USE ONLY (FOU
 <body>
 <p>Greetings FEDTEST,</p>
 
-<p>Cyber Hygiene scans of your host(s) conducted in the past day have detected one or both of the following:
+<p>Cyber Hygiene scans of your host(s) conducted in the past day have detected one or more of the following:
 <ul>
-  <li>New critical and/or high vulnerabilities</li>
+  <li>New critical, high, and/or known exploited vulnerabilities</li>
   <li>New potentially risky services</li>
 </ul>
 </p>
 
-<p>As part of <a href="https://cyber.dhs.gov/bod/19-02/">BOD 19-02</a>, critical findings need to be remediated within 15 days and high findings remediated within 30 days.</p>
+<p>As part of <a href="https://www.cisa.gov/news-events/directives/bod-19-02-vulnerability-remediation-requirements-internet-accessible-systems">BOD 19-02</a>, critical findings need to be remediated within 15 days and high findings remediated within 30 days.</p>
 
-<p>CISA also recommends reviewing hosts with potentially risky open services (e.g. RDP, Telnet, etc.) to ensure that each service is intended to be available to the public and, where applicable, the service is up-to-date on the latest version, correctly configured, and uses strong authentication.</p>
+<p>As part of <a href="https://www.cisa.gov/news-events/directives/bod-22-01-reducing-significant-risk-known-exploited-vulnerabilities">BOD 22-01</a>, any "known exploited" findings, regardless of severity, need to be remediated within two weeks.</p>
 
-<p>The details are in the attached PDF, which has the same password as your Cyber Hygiene report.</p>
+<p>CISA also recommends reviewing hosts with potentially risky open services (e.g. RDP, Telnet, etc.), <em>especially if they are functioning as networked management interfaces</em>, to ensure that each service is intended to be available to the public and, where applicable, the service is up-to-date, correctly configured, and uses strong authentication.</p>
+
+<p>As part of <a href="https://www.cisa.gov/news-events/directives/binding-operational-directive-23-02">BOD 23-02</a>, networked management interfaces exposed to the public internet must either be removed from the internet by making it only accessible from an internal enterprise network or protected by capabilities that enforce access control to the interface through a policy enforcement point separate from the interface itself as part of a Zero Trust Architecture within 14 days.</p>
+
+<p>The details are in the attached PDF, which has the same password as your weekly Cyber Hygiene Vulnerability Scanning report.</p>
 
 <p>If you have any questions, please contact our office.</p>
 
@@ -223,15 +239,19 @@ Cybersecurity and Infrastructure Security Agency<br>
             elif part.get_content_type() == "text/plain":
                 body = """Greetings FEDTEST,
 
-Cyber Hygiene scans of your host(s) conducted in the past day have detected one or both of the following:
-* New critical and/or high vulnerabilities
+Cyber Hygiene scans of your host(s) conducted in the past day have detected one or more of the following:
+* New critical, high, and/or known exploited vulnerabilities
 * New potentially risky services
 
 As part of BOD 19-02, critical findings need to be remediated within 15 days and high findings remediated within 30 days.
 
-CISA also recommends reviewing hosts with potentially risky open services (e.g. RDP, Telnet, etc.) to ensure that each service is intended to be available to the public and, where applicable, the service is up-to-date on the latest version, correctly configured, and uses strong authentication.
+As part of BOD 22-01, any "known exploited" findings, regardless of severity, need to be remediated within two weeks.
 
-The details are in the attached PDF, which has the same password as your Cyber Hygiene report.
+CISA also recommends reviewing hosts with potentially risky open services (e.g. RDP, Telnet, etc.), especially if they are functioning as networked management interfaces, to ensure that each service is intended to be available to the public and, where applicable, the service is up-to-date, correctly configured, and uses strong authentication.
+
+As part of BOD 23-02, networked management interfaces exposed to the public internet must either be removed from the internet by making it only accessible from an internal enterprise network or protected by capabilities that enforce access control to the interface through a policy enforcement point separate from the interface itself as part of a Zero Trust Architecture within 14 days.
+
+The details are in the attached PDF, which has the same password as your weekly Cyber Hygiene Vulnerability Scanning report.
 
 If you have any questions, please contact our office.
 
@@ -249,18 +269,22 @@ WARNING: This message and any attached document(s) is FOR OFFICIAL USE ONLY (FOU
 <body>
 <p>Greetings FEDTEST,</p>
 
-<p>Cyber Hygiene scans of your host(s) conducted in the past day have detected one or both of the following:
+<p>Cyber Hygiene scans of your host(s) conducted in the past day have detected one or more of the following:
 <ul>
-  <li>New critical and/or high vulnerabilities</li>
+  <li>New critical, high, and/or known exploited vulnerabilities</li>
   <li>New potentially risky services</li>
 </ul>
 </p>
 
-<p>As part of <a href="https://cyber.dhs.gov/bod/19-02/">BOD 19-02</a>, critical findings need to be remediated within 15 days and high findings remediated within 30 days.</p>
+<p>As part of <a href="https://www.cisa.gov/news-events/directives/bod-19-02-vulnerability-remediation-requirements-internet-accessible-systems">BOD 19-02</a>, critical findings need to be remediated within 15 days and high findings remediated within 30 days.</p>
 
-<p>CISA also recommends reviewing hosts with potentially risky open services (e.g. RDP, Telnet, etc.) to ensure that each service is intended to be available to the public and, where applicable, the service is up-to-date on the latest version, correctly configured, and uses strong authentication.</p>
+<p>As part of <a href="https://www.cisa.gov/news-events/directives/bod-22-01-reducing-significant-risk-known-exploited-vulnerabilities">BOD 22-01</a>, any "known exploited" findings, regardless of severity, need to be remediated within two weeks.</p>
 
-<p>The details are in the attached PDF, which has the same password as your Cyber Hygiene report.</p>
+<p>CISA also recommends reviewing hosts with potentially risky open services (e.g. RDP, Telnet, etc.), <em>especially if they are functioning as networked management interfaces</em>, to ensure that each service is intended to be available to the public and, where applicable, the service is up-to-date, correctly configured, and uses strong authentication.</p>
+
+<p>As part of <a href="https://www.cisa.gov/news-events/directives/binding-operational-directive-23-02">BOD 23-02</a>, networked management interfaces exposed to the public internet must either be removed from the internet by making it only accessible from an internal enterprise network or protected by capabilities that enforce access control to the interface through a policy enforcement point separate from the interface itself as part of a Zero Trust Architecture within 14 days.</p>
+
+<p>The details are in the attached PDF, which has the same password as your weekly Cyber Hygiene Vulnerability Scanning report.</p>
 
 <p>If you have any questions, please contact our office.</p>
 
@@ -318,15 +342,19 @@ Cybersecurity and Infrastructure Security Agency<br>
             elif part.get_content_type() == "text/plain":
                 body = """Greetings FEDTEST,
 
-Cyber Hygiene scans of your host(s) conducted in the past day have detected one or both of the following:
-* New critical and/or high vulnerabilities
+Cyber Hygiene scans of your host(s) conducted in the past day have detected one or more of the following:
+* New critical, high, and/or known exploited vulnerabilities
 * New potentially risky services
 
 As part of BOD 19-02, critical findings need to be remediated within 15 days and high findings remediated within 30 days.
 
-CISA also recommends reviewing hosts with potentially risky open services (e.g. RDP, Telnet, etc.) to ensure that each service is intended to be available to the public and, where applicable, the service is up-to-date on the latest version, correctly configured, and uses strong authentication.
+As part of BOD 22-01, any "known exploited" findings, regardless of severity, need to be remediated within two weeks.
 
-The details are in the attached PDF, which has the same password as your Cyber Hygiene report.
+CISA also recommends reviewing hosts with potentially risky open services (e.g. RDP, Telnet, etc.), especially if they are functioning as networked management interfaces, to ensure that each service is intended to be available to the public and, where applicable, the service is up-to-date, correctly configured, and uses strong authentication.
+
+As part of BOD 23-02, networked management interfaces exposed to the public internet must either be removed from the internet by making it only accessible from an internal enterprise network or protected by capabilities that enforce access control to the interface through a policy enforcement point separate from the interface itself as part of a Zero Trust Architecture within 14 days.
+
+The details are in the attached PDF, which has the same password as your weekly Cyber Hygiene Vulnerability Scanning report.
 
 If you have any questions, please contact our office.
 
@@ -344,18 +372,22 @@ WARNING: This message and any attached document(s) is FOR OFFICIAL USE ONLY (FOU
 <body>
 <p>Greetings FEDTEST,</p>
 
-<p>Cyber Hygiene scans of your host(s) conducted in the past day have detected one or both of the following:
+<p>Cyber Hygiene scans of your host(s) conducted in the past day have detected one or more of the following:
 <ul>
-  <li>New critical and/or high vulnerabilities</li>
+  <li>New critical, high, and/or known exploited vulnerabilities</li>
   <li>New potentially risky services</li>
 </ul>
 </p>
 
-<p>As part of <a href="https://cyber.dhs.gov/bod/19-02/">BOD 19-02</a>, critical findings need to be remediated within 15 days and high findings remediated within 30 days.</p>
+<p>As part of <a href="https://www.cisa.gov/news-events/directives/bod-19-02-vulnerability-remediation-requirements-internet-accessible-systems">BOD 19-02</a>, critical findings need to be remediated within 15 days and high findings remediated within 30 days.</p>
 
-<p>CISA also recommends reviewing hosts with potentially risky open services (e.g. RDP, Telnet, etc.) to ensure that each service is intended to be available to the public and, where applicable, the service is up-to-date on the latest version, correctly configured, and uses strong authentication.</p>
+<p>As part of <a href="https://www.cisa.gov/news-events/directives/bod-22-01-reducing-significant-risk-known-exploited-vulnerabilities">BOD 22-01</a>, any "known exploited" findings, regardless of severity, need to be remediated within two weeks.</p>
 
-<p>The details are in the attached PDF, which has the same password as your Cyber Hygiene report.</p>
+<p>CISA also recommends reviewing hosts with potentially risky open services (e.g. RDP, Telnet, etc.), <em>especially if they are functioning as networked management interfaces</em>, to ensure that each service is intended to be available to the public and, where applicable, the service is up-to-date, correctly configured, and uses strong authentication.</p>
+
+<p>As part of <a href="https://www.cisa.gov/news-events/directives/binding-operational-directive-23-02">BOD 23-02</a>, networked management interfaces exposed to the public internet must either be removed from the internet by making it only accessible from an internal enterprise network or protected by capabilities that enforce access control to the interface through a policy enforcement point separate from the interface itself as part of a Zero Trust Architecture within 14 days.</p>
+
+<p>The details are in the attached PDF, which has the same password as your weekly Cyber Hygiene Vulnerability Scanning report.</p>
 
 <p>If you have any questions, please contact our office.</p>
 
@@ -403,15 +435,19 @@ Cybersecurity and Infrastructure Security Agency<br>
             elif part.get_content_type() == "text/plain":
                 text_body = """Greetings NONFEDTEST,
 
-Cyber Hygiene scans of your host(s) conducted in the past day have detected one or both of the following:
-* New critical and/or high vulnerabilities
+Cyber Hygiene scans of your host(s) conducted in the past day have detected one or more of the following:
+* New critical, high, and/or known exploited vulnerabilities
 * New potentially risky services
 
 CISA recommends remediating critical findings within 15 days and high findings within 30 days.
 
-CISA also recommends reviewing hosts with potentially risky open services (e.g. RDP, Telnet, etc.) to ensure that each service is intended to be available to the public and, where applicable, the service is up-to-date on the latest version, correctly configured, and uses strong authentication.
+CISA recommends remediating known exploited vulnerabilities, regardless of severity, within two weeks.
 
-The details are in the attached PDF, which has the same password as your Cyber Hygiene report.
+CISA also recommends reviewing hosts with potentially risky open services (e.g. RDP, Telnet, etc.), especially if they are functioning as networked management interfaces, to ensure that each service is intended to be available to the public and, where applicable, the service is up-to-date, correctly configured, and uses strong authentication.
+
+
+
+The details are in the attached PDF, which has the same password as your weekly Cyber Hygiene Vulnerability Scanning report.
 
 If you have any questions, please contact our office.
 
@@ -429,18 +465,22 @@ WARNING: This message and any attached document(s) is FOR OFFICIAL USE ONLY (FOU
 <body>
 <p>Greetings NONFEDTEST,</p>
 
-<p>Cyber Hygiene scans of your host(s) conducted in the past day have detected one or both of the following:
+<p>Cyber Hygiene scans of your host(s) conducted in the past day have detected one or more of the following:
 <ul>
-  <li>New critical and/or high vulnerabilities</li>
+  <li>New critical, high, and/or known exploited vulnerabilities</li>
   <li>New potentially risky services</li>
 </ul>
 </p>
 
 <p>CISA recommends remediating critical findings within 15 days and high findings within 30 days.</p>
 
-<p>CISA also recommends reviewing hosts with potentially risky open services (e.g. RDP, Telnet, etc.) to ensure that each service is intended to be available to the public and, where applicable, the service is up-to-date on the latest version, correctly configured, and uses strong authentication.</p>
+<p>CISA recommends remediating known exploited vulnerabilities, regardless of severity, within two weeks.</p>
 
-<p>The details are in the attached PDF, which has the same password as your Cyber Hygiene report.</p>
+<p>CISA also recommends reviewing hosts with potentially risky open services (e.g. RDP, Telnet, etc.), <em>especially if they are functioning as networked management interfaces</em>, to ensure that each service is intended to be available to the public and, where applicable, the service is up-to-date, correctly configured, and uses strong authentication.</p>
+
+<p></p>
+
+<p>The details are in the attached PDF, which has the same password as your weekly Cyber Hygiene Vulnerability Scanning report.</p>
 
 <p>If you have any questions, please contact our office.</p>
 
@@ -488,15 +528,19 @@ Cybersecurity and Infrastructure Security Agency<br>
             elif part.get_content_type() == "text/plain":
                 body = """Greetings NONFEDTEST,
 
-Cyber Hygiene scans of your host(s) conducted in the past day have detected one or both of the following:
-* New critical and/or high vulnerabilities
+Cyber Hygiene scans of your host(s) conducted in the past day have detected one or more of the following:
+* New critical, high, and/or known exploited vulnerabilities
 * New potentially risky services
 
 CISA recommends remediating critical findings within 15 days and high findings within 30 days.
 
-CISA also recommends reviewing hosts with potentially risky open services (e.g. RDP, Telnet, etc.) to ensure that each service is intended to be available to the public and, where applicable, the service is up-to-date on the latest version, correctly configured, and uses strong authentication.
+CISA recommends remediating known exploited vulnerabilities, regardless of severity, within two weeks.
 
-The details are in the attached PDF, which has the same password as your Cyber Hygiene report.
+CISA also recommends reviewing hosts with potentially risky open services (e.g. RDP, Telnet, etc.), especially if they are functioning as networked management interfaces, to ensure that each service is intended to be available to the public and, where applicable, the service is up-to-date, correctly configured, and uses strong authentication.
+
+
+
+The details are in the attached PDF, which has the same password as your weekly Cyber Hygiene Vulnerability Scanning report.
 
 If you have any questions, please contact our office.
 
@@ -514,18 +558,22 @@ WARNING: This message and any attached document(s) is FOR OFFICIAL USE ONLY (FOU
 <body>
 <p>Greetings NONFEDTEST,</p>
 
-<p>Cyber Hygiene scans of your host(s) conducted in the past day have detected one or both of the following:
+<p>Cyber Hygiene scans of your host(s) conducted in the past day have detected one or more of the following:
 <ul>
-  <li>New critical and/or high vulnerabilities</li>
+  <li>New critical, high, and/or known exploited vulnerabilities</li>
   <li>New potentially risky services</li>
 </ul>
 </p>
 
 <p>CISA recommends remediating critical findings within 15 days and high findings within 30 days.</p>
 
-<p>CISA also recommends reviewing hosts with potentially risky open services (e.g. RDP, Telnet, etc.) to ensure that each service is intended to be available to the public and, where applicable, the service is up-to-date on the latest version, correctly configured, and uses strong authentication.</p>
+<p>CISA recommends remediating known exploited vulnerabilities, regardless of severity, within two weeks.</p>
 
-<p>The details are in the attached PDF, which has the same password as your Cyber Hygiene report.</p>
+<p>CISA also recommends reviewing hosts with potentially risky open services (e.g. RDP, Telnet, etc.), <em>especially if they are functioning as networked management interfaces</em>, to ensure that each service is intended to be available to the public and, where applicable, the service is up-to-date, correctly configured, and uses strong authentication.</p>
+
+<p></p>
+
+<p>The details are in the attached PDF, which has the same password as your weekly Cyber Hygiene Vulnerability Scanning report.</p>
 
 <p>If you have any questions, please contact our office.</p>
 
@@ -583,15 +631,19 @@ Cybersecurity and Infrastructure Security Agency<br>
             elif part.get_content_type() == "text/plain":
                 body = """Greetings NONFEDTEST,
 
-Cyber Hygiene scans of your host(s) conducted in the past day have detected one or both of the following:
-* New critical and/or high vulnerabilities
+Cyber Hygiene scans of your host(s) conducted in the past day have detected one or more of the following:
+* New critical, high, and/or known exploited vulnerabilities
 * New potentially risky services
 
 CISA recommends remediating critical findings within 15 days and high findings within 30 days.
 
-CISA also recommends reviewing hosts with potentially risky open services (e.g. RDP, Telnet, etc.) to ensure that each service is intended to be available to the public and, where applicable, the service is up-to-date on the latest version, correctly configured, and uses strong authentication.
+CISA recommends remediating known exploited vulnerabilities, regardless of severity, within two weeks.
 
-The details are in the attached PDF, which has the same password as your Cyber Hygiene report.
+CISA also recommends reviewing hosts with potentially risky open services (e.g. RDP, Telnet, etc.), especially if they are functioning as networked management interfaces, to ensure that each service is intended to be available to the public and, where applicable, the service is up-to-date, correctly configured, and uses strong authentication.
+
+
+
+The details are in the attached PDF, which has the same password as your weekly Cyber Hygiene Vulnerability Scanning report.
 
 If you have any questions, please contact our office.
 
@@ -609,18 +661,22 @@ WARNING: This message and any attached document(s) is FOR OFFICIAL USE ONLY (FOU
 <body>
 <p>Greetings NONFEDTEST,</p>
 
-<p>Cyber Hygiene scans of your host(s) conducted in the past day have detected one or both of the following:
+<p>Cyber Hygiene scans of your host(s) conducted in the past day have detected one or more of the following:
 <ul>
-  <li>New critical and/or high vulnerabilities</li>
+  <li>New critical, high, and/or known exploited vulnerabilities</li>
   <li>New potentially risky services</li>
 </ul>
 </p>
 
 <p>CISA recommends remediating critical findings within 15 days and high findings within 30 days.</p>
 
-<p>CISA also recommends reviewing hosts with potentially risky open services (e.g. RDP, Telnet, etc.) to ensure that each service is intended to be available to the public and, where applicable, the service is up-to-date on the latest version, correctly configured, and uses strong authentication.</p>
+<p>CISA recommends remediating known exploited vulnerabilities, regardless of severity, within two weeks.</p>
 
-<p>The details are in the attached PDF, which has the same password as your Cyber Hygiene report.</p>
+<p>CISA also recommends reviewing hosts with potentially risky open services (e.g. RDP, Telnet, etc.), <em>especially if they are functioning as networked management interfaces</em>, to ensure that each service is intended to be available to the public and, where applicable, the service is up-to-date, correctly configured, and uses strong authentication.</p>
+
+<p></p>
+
+<p>The details are in the attached PDF, which has the same password as your weekly Cyber Hygiene Vulnerability Scanning report.</p>
 
 <p>If you have any questions, please contact our office.</p>
 
@@ -678,15 +734,19 @@ Cybersecurity and Infrastructure Security Agency<br>
             elif part.get_content_type() == "text/plain":
                 body = """Greetings NONFEDTEST,
 
-Cyber Hygiene scans of your host(s) conducted in the past day have detected one or both of the following:
-* New critical and/or high vulnerabilities
+Cyber Hygiene scans of your host(s) conducted in the past day have detected one or more of the following:
+* New critical, high, and/or known exploited vulnerabilities
 * New potentially risky services
 
 CISA recommends remediating critical findings within 15 days and high findings within 30 days.
 
-CISA also recommends reviewing hosts with potentially risky open services (e.g. RDP, Telnet, etc.) to ensure that each service is intended to be available to the public and, where applicable, the service is up-to-date on the latest version, correctly configured, and uses strong authentication.
+CISA recommends remediating known exploited vulnerabilities, regardless of severity, within two weeks.
 
-The details are in the attached PDF, which has the same password as your Cyber Hygiene report.
+CISA also recommends reviewing hosts with potentially risky open services (e.g. RDP, Telnet, etc.), especially if they are functioning as networked management interfaces, to ensure that each service is intended to be available to the public and, where applicable, the service is up-to-date, correctly configured, and uses strong authentication.
+
+
+
+The details are in the attached PDF, which has the same password as your weekly Cyber Hygiene Vulnerability Scanning report.
 
 If you have any questions, please contact our office.
 
@@ -704,18 +764,22 @@ WARNING: This message and any attached document(s) is FOR OFFICIAL USE ONLY (FOU
 <body>
 <p>Greetings NONFEDTEST,</p>
 
-<p>Cyber Hygiene scans of your host(s) conducted in the past day have detected one or both of the following:
+<p>Cyber Hygiene scans of your host(s) conducted in the past day have detected one or more of the following:
 <ul>
-  <li>New critical and/or high vulnerabilities</li>
+  <li>New critical, high, and/or known exploited vulnerabilities</li>
   <li>New potentially risky services</li>
 </ul>
 </p>
 
 <p>CISA recommends remediating critical findings within 15 days and high findings within 30 days.</p>
 
-<p>CISA also recommends reviewing hosts with potentially risky open services (e.g. RDP, Telnet, etc.) to ensure that each service is intended to be available to the public and, where applicable, the service is up-to-date on the latest version, correctly configured, and uses strong authentication.</p>
+<p>CISA recommends remediating known exploited vulnerabilities, regardless of severity, within two weeks.</p>
 
-<p>The details are in the attached PDF, which has the same password as your Cyber Hygiene report.</p>
+<p>CISA also recommends reviewing hosts with potentially risky open services (e.g. RDP, Telnet, etc.), <em>especially if they are functioning as networked management interfaces</em>, to ensure that each service is intended to be available to the public and, where applicable, the service is up-to-date, correctly configured, and uses strong authentication.</p>
+
+<p></p>
+
+<p>The details are in the attached PDF, which has the same password as your weekly Cyber Hygiene Vulnerability Scanning report.</p>
 
 <p>If you have any questions, please contact our office.</p>
 
