@@ -18,5 +18,5 @@ services:
       - notification
       - --cyhy-notification-dir=/cyhy_notifications/
       - --db-creds-file=/run/secrets/database_creds.yml
-      - --csa-email-file=/run/secrets/csa_emails.yml
+      - --csa-emails-file=/run/secrets/csa_emails.yml
       - "--summary-to=cisa-cyhy-mailer@gwe.cisa.dhs.gov"

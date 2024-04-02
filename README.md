@@ -29,7 +29,7 @@ pip install git+https://github.com/cisagov/cyhy-mailer.git
 Usage:
   cyhy-mailer (bod1801|cybex|cyhy|notification)... [--cyhy-report-dir=DIRECTORY] [--tmail-report-dir=DIRECTORY] [--https-report-dir=DIRECTORY]
 [--cybex-scorecard-dir=DIRECTORY] [--cyhy-notification-dir=DIRECTORY]
-[--db-creds-file=FILENAME] [--csa-email-file=FILENAME] [--batch-size=SIZE]
+[--db-creds-file=FILENAME] [--csa-emails-file=FILENAME] [--batch-size=SIZE]
 [--summary-to=EMAILS] [--debug] [--dry-run]
   cyhy-mailer (-h | --help)
 
@@ -55,7 +55,7 @@ Options:
   -c --db-creds-file=FILENAME       A YAML file containing the Cyber
                                     Hygiene database credentials.
                                     [default: /run/secrets/database_creds.yml]
-  -e --csa-email-file=FILENAME      A YAML file associating each state or
+  -e --csa-emails-file=FILENAME     A YAML file associating each state or
                                     territory with the email address of the
                                     corresponding CISA Cyber Security Advisor
                                     (CSA).  The YAML file should be a

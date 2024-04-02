@@ -6,7 +6,7 @@ cyhy-mailer can send out Cyber Hygiene and BOD 18-01 reports, as well
 as Cyber Hygiene notifications and the Cyber Exposure scorecard.
 
 Usage:
-  cyhy-mailer (bod1801|cybex|cyhy|notification)... [--cyhy-report-dir=DIRECTORY] [--tmail-report-dir=DIRECTORY] [--https-report-dir=DIRECTORY] [--cybex-scorecard-dir=DIRECTORY] [--cyhy-notification-dir=DIRECTORY] [--db-creds-file=FILENAME] [--csa-email-file=FILENAME] [--batch-size=SIZE] [--summary-to=EMAILS] [--debug] [--dry-run]
+  cyhy-mailer (bod1801|cybex|cyhy|notification)... [--cyhy-report-dir=DIRECTORY] [--tmail-report-dir=DIRECTORY] [--https-report-dir=DIRECTORY] [--cybex-scorecard-dir=DIRECTORY] [--cyhy-notification-dir=DIRECTORY] [--db-creds-file=FILENAME] [--csa-emails-file=FILENAME] [--batch-size=SIZE] [--summary-to=EMAILS] [--debug] [--dry-run]
   cyhy-mailer (-h | --help)
 
 Options:
@@ -31,7 +31,7 @@ Options:
   -c --db-creds-file=FILENAME       A YAML file containing the Cyber
                                     Hygiene database credentials.
                                     [default: /run/secrets/database_creds.yml]
-  -e --csa-email-file=FILENAME      A YAML file associating each state
+  -e --csa-emails-file=FILENAME     A YAML file associating each state
                                     or territory with the email
                                     address of the corresponding CISA
                                     Cyber Security Advisor (CSA).  The
@@ -1154,19 +1154,19 @@ def main():
         return 1
 
     # Parse out the CSA email mapping, if present.
-    csa_email_file = args["--csa-email-file"]
-    if csa_email_file is not None:
+    csa_emails_file = args["--csa-emails-file"]
+    if csa_emails_file is not None:
         try:
-            with open(csa_email_file) as stream:
+            with open(csa_emails_file) as stream:
                 csa_email_mapping = yaml.load(stream, Loader=yaml.SafeLoader)
         except OSError:
             logging.critical(
-                f"CSA email file {csa_email_file} does not exist", exc_info=True
+                f"CSA emails file {csa_emails_file} does not exist", exc_info=True
             )
             return 1
         except yaml.YAMLError:
             logging.critical(
-                f"CSA email file {csa_email_file} does not contain valid YAML",
+                f"CSA emails file {csa_emails_file} does not contain valid YAML",
                 exc_info=True,
             )
             return 1
