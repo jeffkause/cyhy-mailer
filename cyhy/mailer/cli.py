@@ -721,7 +721,7 @@ def send_cybex_scorecard(
 
 
 def send_cyhy_reports(
-    db, batch_size, ses_client, cyhy_report_dir, csa_emails, dry_run=False
+    db, batch_size, ses_client, cyhy_report_dir, csa_emails=None, dry_run=False
 ):
     """Send out Cyber Hygiene reports.
 
@@ -946,7 +946,7 @@ def send_cyhy_reports(
 
 
 def send_cyhy_notifications(
-    db, batch_size, ses_client, cyhy_notification_dir, csa_emails, dry_run=False
+    db, batch_size, ses_client, cyhy_notification_dir, csa_emails=None, dry_run=False
 ):
     """Send out Cyber Hygiene reports notifications.
 
