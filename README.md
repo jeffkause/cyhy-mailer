@@ -57,7 +57,7 @@ Options:
                                     [default: /run/secrets/database_creds.yml]
   -e --csa-emails-file=FILENAME     A YAML file associating each state or
                                     territory with the email address of the
-                                    corresponding CISA Cyber Security Advisor
+                                    corresponding CISA Cybersecurity Advisor
                                     (CSA).  The YAML file should be a
                                     list of dictionaries, each
                                     corresponding to a CSA region.
