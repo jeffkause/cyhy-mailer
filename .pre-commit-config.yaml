@@ -141,8 +141,18 @@ repos:
     hooks:
       - id: mypy
         additional_dependencies:
+          - boto3-stubs
+          - pymongo-stubs
+          - types-chevron
+          - types-docopt
           - types-PyYAML
           - types-setuptools
+        args:
+          # Default arguments
+          - --ignore-missing-imports
+          - --scripts-are-modules
+          # Support native namespace packages with pre-commit
+          - --explicit-package-bases
   - repo: https://github.com/asottile/pyupgrade
     rev: v3.10.1
     hooks:
