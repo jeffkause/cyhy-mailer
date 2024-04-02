@@ -104,34 +104,90 @@ version: '1'
 ---
 - email: csa_region_01@example.gov
   name: Region 01
-  states_and_territories: [CT, MA, ME, NH, RI, VT]
+  states_and_territories:
+    - CT
+    - MA
+    - ME
+    - NH
+    - RI
+    - VT
 - email: csa_region_02@example.gov
   name: Region 02
-  states_and_territories: [NJ, NY, PR, VI]
+  states_and_territories:
+    - NJ
+    - NY
+    - PR
+    - VI
 - email: csa_region_03@example.gov
   name: Region 03
-  states_and_territories: [DE, DC, MD, PA, VA, WV]
+  states_and_territories:
+    - DE
+    - DC
+    - MD
+    - PA
+    - VA
+    - WV
 - email: csa_region_04@example.gov
   name: Region 04
-  states_and_territories: [AL, FL, GA, KY, MS, NC, SC, TN]
+  states_and_territories:
+    - AL
+    - FL
+    - GA
+    - KY
+    - MS
+    - NC
+    - SC
+    - TN
 - email: csa_region_05@example.gov
   name: Region 05
-  states_and_territories: [IL, IN, MI, MN, OH, WI]
+  states_and_territories:
+    - IL
+    - IN
+    - MI
+    - MN
+    - OH
+    - WI
 - email: csa_region_06@example.gov
   name: Region 06
-  states_and_territories: [AR, LA, NM, OK, TX]
+  states_and_territories:
+    - AR
+    - LA
+    - NM
+    - OK
+    - TX
 - email: csa_region_07@example.gov
   name: Region 07
-  states_and_territories: [IA, KS, MO, NE]
+  states_and_territories:
+    - IA
+    - KS
+    - MO
+    - NE
 - email: csa_region_08@example.gov
   name: Region 08
-  states_and_territories: [CO, MT, ND, SD, UT, WY]
+  states_and_territories:
+    - CO
+    - MT
+    - ND
+    - SD
+    - UT
+    - WY
 - email: csa_region_09@example.gov
   name: Region 09
-  states_and_territories: [AZ, CA, HI, NV, AS, GU, MP]
+  states_and_territories:
+    - AZ
+    - CA
+    - HI
+    - NV
+    - AS
+    - GU
+    - MP
 - email: csa_region_10@example.gov
   name: Region 10
-  states_and_territories: [AK, ID, OR, WA]
+  states_and_territories:
+    - AK
+    - ID
+    - OR
+    - WA
 ```
 
 ## License ##
