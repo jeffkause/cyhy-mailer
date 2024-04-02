@@ -91,11 +91,11 @@ Options:
 ### Example database credentials file ###
 
 ```yaml
-version: '1'
-
+---
 database:
   name: cyhy
   uri: mongodb://username:password@hostname:27017/cyhy
+version: '1'
 ```
 
 ### Example CSA emails file ###
