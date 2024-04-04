@@ -12,26 +12,25 @@ e-mail addresses.
 After using `git` to clone the repository, you can install
 `cyhy-mailer` using `pip`:
 
-```bash
+```console
 pip install /path/to/cyhy-mailer
 ```
 
 Or, if you prefer, you can install directly from
 [the GitHub repository](https://github.com/cisagov/cyhy-mailer):
 
-```bash
+```console
 pip install git+https://github.com/cisagov/cyhy-mailer.git
 ```
 
 ## Usage ##
 
-```bash
+```console
 Usage:
-  cyhy-mailer (bod1801|cybex|cyhy|notification)... [--cyhy-report-dir=DIRECTORY]
-[--tmail-report-dir=DIRECTORY] [--https-report-dir=DIRECTORY]
+  cyhy-mailer (bod1801|cybex|cyhy|notification)... [--cyhy-report-dir=DIRECTORY] [--tmail-report-dir=DIRECTORY] [--https-report-dir=DIRECTORY]
 [--cybex-scorecard-dir=DIRECTORY] [--cyhy-notification-dir=DIRECTORY]
-[--db-creds-file=FILENAME] [--batch-size=SIZE] [--summary-to=EMAILS] [--debug]
-[--dry-run]
+[--db-creds-file=FILENAME] [--csa-emails-file=FILENAME] [--batch-size=SIZE]
+[--summary-to=EMAILS] [--debug] [--dry-run]
   cyhy-mailer (-h | --help)
 
 Options:
@@ -56,6 +55,26 @@ Options:
   -c --db-creds-file=FILENAME       A YAML file containing the Cyber
                                     Hygiene database credentials.
                                     [default: /run/secrets/database_creds.yml]
+  -e --csa-emails-file=FILENAME     A YAML file associating each state or
+                                    territory with the email address of the
+                                    corresponding CISA Cybersecurity Advisor
+                                    (CSA).  The YAML file should be a
+                                    list of dictionaries, each
+                                    corresponding to a CSA region.
+                                    Each dictionary must contain an
+                                    "email" field containing the email
+                                    address corresponding to the CSA
+                                    for that region, as well as a
+                                    "states_and_territories" field
+                                    containing a list of two-letter
+                                    state and territory abbreviations.
+                                    Each abbreviation corresponds to a
+                                    state or territory that belongs to
+                                    the region.  If this option is
+                                    present then the appropriate CSA
+                                    will be BCCd any CyHy reports or
+                                    notifications related to a
+                                    stakeholder within their region.
   --batch-size=SIZE                 The batch size to use when retrieving
                                     results from the Mongo database.  If not
                                     present then the default Mongo batch size
@@ -67,6 +86,108 @@ Options:
   -d --debug                        Include debugging messages in the output.
   --dry-run                         Do everything except actually send out
                                     emails.
+```
+
+### Example database credentials file ###
+
+```yaml
+---
+database:
+  name: cyhy
+  uri: mongodb://username:password@hostname:27017/cyhy
+version: '1'
+```
+
+### Example CSA emails file ###
+
+```yaml
+---
+- email: csa_region_01@example.gov
+  name: Region 01
+  states_and_territories:
+    - CT
+    - MA
+    - ME
+    - NH
+    - RI
+    - VT
+- email: csa_region_02@example.gov
+  name: Region 02
+  states_and_territories:
+    - NJ
+    - NY
+    - PR
+    - VI
+- email: csa_region_03@example.gov
+  name: Region 03
+  states_and_territories:
+    - DE
+    - DC
+    - MD
+    - PA
+    - VA
+    - WV
+- email: csa_region_04@example.gov
+  name: Region 04
+  states_and_territories:
+    - AL
+    - FL
+    - GA
+    - KY
+    - MS
+    - NC
+    - SC
+    - TN
+- email: csa_region_05@example.gov
+  name: Region 05
+  states_and_territories:
+    - IL
+    - IN
+    - MI
+    - MN
+    - OH
+    - WI
+- email: csa_region_06@example.gov
+  name: Region 06
+  states_and_territories:
+    - AR
+    - LA
+    - NM
+    - OK
+    - TX
+- email: csa_region_07@example.gov
+  name: Region 07
+  states_and_territories:
+    - IA
+    - KS
+    - MO
+    - NE
+- email: csa_region_08@example.gov
+  name: Region 08
+  states_and_territories:
+    - CO
+    - MT
+    - ND
+    - SD
+    - UT
+    - WY
+- email: csa_region_09@example.gov
+  name: Region 09
+  states_and_territories:
+    - AZ
+    - CA
+    - HI
+    - NV
+    - AS
+    - GU
+    - MP
+- email: csa_region_10@example.gov
+  name: Region 10
+  states_and_territories:
+    - AK
+    - ID
+    - OR
+    - WA
 ```
 
 ## License ##
