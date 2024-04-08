@@ -74,7 +74,8 @@ Options:
                                     present then the appropriate CSA
                                     will be BCCd any CyHy reports or
                                     notifications related to a
-                                    stakeholder within their region.
+                                    stakeholder within their region (federal
+                                    and international entities excluded).
   --batch-size=SIZE                 The batch size to use when retrieving
                                     results from the Mongo database.  If not
                                     present then the default Mongo batch size

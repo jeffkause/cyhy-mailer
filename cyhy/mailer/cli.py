@@ -51,7 +51,8 @@ Options:
                                     present then the appropriate CSA
                                     will be BCCd any CyHy reports or
                                     notifications related to a
-                                    stakeholder within their region.
+                                    stakeholder within their region (federal
+                                    and international entities excluded).
   --batch-size=SIZE                 The batch size to use when retrieving
                                     results from the Mongo database.  If not
                                     present then the default Mongo batch size
@@ -747,8 +748,8 @@ def send_cyhy_reports(
         Either None or a dict with keys belonging to the set of
         two-letter abbreviations for states and territories and values
         equal to the email of the corresponding CSA for the region to
-        which the state or territory belongs.  If None then the CSAs
-        will not be BCCd.
+        which the state or territory belongs (federal and international
+        entities excluded).  If None then the CSAs will not be BCCd.
 
     dry_run : bool
         If True then do not actually send email.
