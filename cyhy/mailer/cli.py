@@ -92,6 +92,8 @@ from cyhy.mailer.StatsMessage import StatsMessage
 from cyhy.mailer.TmailMessage import TmailMessage
 from mongo_db_from_config import db_from_config
 
+CSA_BCC_EXCLUDED_ENTITY_TYPES = ["FEDERAL", "INTERNATIONAL"]
+
 
 class Error(Exception):
     """A base class for exceptions used in this module."""
@@ -798,10 +800,10 @@ def send_cyhy_reports(
             # Grab the email address of the appropriate CSA for non-Federal and
             # non-International entities.
             csa_email_address = None
-            if csa_emails is not None and request["agency"].get("type") not in [
-                "FEDERAL",
-                "INTERNATIONAL",
-            ]:
+            if (
+                csa_emails is not None
+                and request["agency"].get("type") not in CSA_BCC_EXCLUDED_ENTITY_TYPES
+            ):
                 try:
                     state = request["agency"]["location"]["state"]
                 except KeyError:
@@ -1024,10 +1026,10 @@ def send_cyhy_notifications(
         # Grab the email address of the appropriate CSA for non-Federal and
         # non-International entities.
         csa_email_address = None
-        if csa_emails is not None and request["agency"].get("type") not in [
-            "FEDERAL",
-            "INTERNATIONAL",
-        ]:
+        if (
+            csa_emails is not None
+            and request["agency"].get("type") not in CSA_BCC_EXCLUDED_ENTITY_TYPES
+        ):
             try:
                 state = request["agency"]["location"]["state"]
             except KeyError:
