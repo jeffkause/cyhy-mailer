@@ -226,6 +226,7 @@ def get_requests_raw(db, query, batch_size=None):
         "agency.contacts.name": True,
         "agency.contacts.type": True,
         "agency.location.state": True,
+        "agency.type": True,
     }
 
     try:
@@ -793,9 +794,13 @@ def send_cyhy_reports(
             if not to_emails:
                 continue
 
-            # Grab the email address of the appropriate CSA.
+            # Grab the email address of the appropriate CSA for non-Federal and
+            # non-International entities.
             csa_email_address = None
-            if csa_emails is not None:
+            if csa_emails is not None and request["agency"].get("type") not in [
+                "FEDERAL",
+                "INTERNATIONAL",
+            ]:
                 try:
                     state = request["agency"]["location"]["state"]
                 except KeyError:
@@ -1015,9 +1020,13 @@ def send_cyhy_notifications(
         if not to_emails:
             continue
 
-        # Grab the email address of the appropriate CSA.
+        # Grab the email address of the appropriate CSA for non-Federal and
+        # non-International entities.
         csa_email_address = None
-        if csa_emails is not None:
+        if csa_emails is not None and request["agency"].get("type") not in [
+            "FEDERAL",
+            "INTERNATIONAL",
+        ]:
             try:
                 state = request["agency"]["location"]["state"]
             except KeyError:
