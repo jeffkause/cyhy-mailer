@@ -797,8 +797,8 @@ def send_cyhy_reports(
             if not to_emails:
                 continue
 
-            # Grab the email address of the appropriate CSA for non-Federal and
-            # non-International entities.
+            # Grab the email address of the appropriate CSA for non-federal and
+            # non-international entities.
             csa_email_address = None
             if (
                 csa_emails is not None
@@ -1023,8 +1023,8 @@ def send_cyhy_notifications(
         if not to_emails:
             continue
 
-        # Grab the email address of the appropriate CSA for non-Federal and
-        # non-International entities.
+        # Grab the email address of the appropriate CSA for non-federal and
+        # non-international entities.
         csa_email_address = None
         if (
             csa_emails is not None
