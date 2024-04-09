@@ -51,7 +51,8 @@ Options:
                                     present then the appropriate CSA
                                     will be BCCd any CyHy reports or
                                     notifications related to a
-                                    stakeholder within their region.
+                                    stakeholder within their region (federal
+                                    and international entities excluded).
   --batch-size=SIZE                 The batch size to use when retrieving
                                     results from the Mongo database.  If not
                                     present then the default Mongo batch size
@@ -90,6 +91,8 @@ from cyhy.mailer.ReportMessage import ReportMessage
 from cyhy.mailer.StatsMessage import StatsMessage
 from cyhy.mailer.TmailMessage import TmailMessage
 from mongo_db_from_config import db_from_config
+
+CSA_BCC_EXCLUDED_ENTITY_TYPES = ["FEDERAL", "INTERNATIONAL"]
 
 
 class Error(Exception):
@@ -226,6 +229,7 @@ def get_requests_raw(db, query, batch_size=None):
         "agency.contacts.name": True,
         "agency.contacts.type": True,
         "agency.location.state": True,
+        "agency.type": True,
     }
 
     try:
@@ -746,8 +750,8 @@ def send_cyhy_reports(
         Either None or a dict with keys belonging to the set of
         two-letter abbreviations for states and territories and values
         equal to the email of the corresponding CSA for the region to
-        which the state or territory belongs.  If None then the CSAs
-        will not be BCCd.
+        which the state or territory belongs (federal and international
+        entities excluded).  If None then the CSAs will not be BCCd.
 
     dry_run : bool
         If True then do not actually send email.
@@ -793,9 +797,13 @@ def send_cyhy_reports(
             if not to_emails:
                 continue
 
-            # Grab the email address of the appropriate CSA.
+            # Grab the email address of the appropriate CSA for non-federal and
+            # non-international entities.
             csa_email_address = None
-            if csa_emails is not None:
+            if (
+                csa_emails is not None
+                and request["agency"].get("type") not in CSA_BCC_EXCLUDED_ENTITY_TYPES
+            ):
                 try:
                     state = request["agency"]["location"]["state"]
                 except KeyError:
@@ -1015,9 +1023,13 @@ def send_cyhy_notifications(
         if not to_emails:
             continue
 
-        # Grab the email address of the appropriate CSA.
+        # Grab the email address of the appropriate CSA for non-federal and
+        # non-international entities.
         csa_email_address = None
-        if csa_emails is not None:
+        if (
+            csa_emails is not None
+            and request["agency"].get("type") not in CSA_BCC_EXCLUDED_ENTITY_TYPES
+        ):
             try:
                 state = request["agency"]["location"]["state"]
             except KeyError:
