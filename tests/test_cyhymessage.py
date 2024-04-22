@@ -15,10 +15,13 @@ class Test(unittest.TestCase):
         to = ["recipient@example.com"]
         pdf = "./tests/data/pdf-sample.pdf"
         entity_acronym = "CLARKE"
+        entity_name = "Clarke of Kent"
         report_date = "December 15, 2001"
         tech_pocs = []
 
-        message = CyhyMessage(to, pdf, entity_acronym, report_date, tech_pocs)
+        message = CyhyMessage(
+            to, pdf, entity_acronym, entity_name, report_date, tech_pocs
+        )
 
         self.assertEqual(message["From"], "reports@cyber.dhs.gov")
         self.assertEqual(
@@ -39,7 +42,7 @@ class Test(unittest.TestCase):
                 self.assertEqual(part.get_payload(decode=True), bytes)
                 self.assertEqual(part.get_filename(), "pdf-sample.pdf")
             elif part.get_content_type() == "text/plain":
-                text_body = """Greetings CLARKE,
+                text_body = """Greetings Clarke of Kent (CLARKE),
 
 The Cyber Hygiene scan results are attached for your review. Same password as before. (If this is your first report and you have yet to receive a password, please let us know.)
 
@@ -57,7 +60,7 @@ WARNING: This document is FOR OFFICIAL USE ONLY (FOUO). It contains information 
                 html_body = """<html>
 <head></head>
 <body>
-<p>Greetings CLARKE,</p>
+<p>Greetings Clarke of Kent (CLARKE),</p>
 
 <p>The Cyber Hygiene scan results are attached for your review. Same password as before. (If this is your first report and you have yet to receive a password, please let us know.)</p>
 
@@ -79,13 +82,16 @@ Cybersecurity and Infrastructure Security Agency<br>
         to = ["recipient@example.com"]
         pdf = "./tests/data/pdf-sample.pdf"
         entity_acronym = "CLARKE"
+        entity_name = "Clarke of Kent"
         report_date = "December 15, 2001"
         tech_pocs = [
             {"name": "Cixin Liu", "email": "cixin@liu.com"},
             {"name": "Alastair Reynolds", "email": "alastair@reynolds.com"},
         ]
 
-        message = CyhyMessage(to, pdf, entity_acronym, report_date, tech_pocs)
+        message = CyhyMessage(
+            to, pdf, entity_acronym, entity_name, report_date, tech_pocs
+        )
 
         self.assertEqual(message["From"], "reports@cyber.dhs.gov")
         self.assertEqual(
@@ -106,7 +112,7 @@ Cybersecurity and Infrastructure Security Agency<br>
                 self.assertEqual(part.get_payload(decode=True), bytes)
                 self.assertEqual(part.get_filename(), "pdf-sample.pdf")
             elif part.get_content_type() == "text/plain":
-                text_body = """Greetings CLARKE,
+                text_body = """Greetings Clarke of Kent (CLARKE),
 
 The Cyber Hygiene scan results are attached for your review. Same password as before. (If this is your first report and you have yet to receive a password, please let us know.)
 
@@ -134,7 +140,7 @@ WARNING: This document is FOR OFFICIAL USE ONLY (FOUO). It contains information 
                 html_body = """<html>
 <head></head>
 <body>
-<p>Greetings CLARKE,</p>
+<p>Greetings Clarke of Kent (CLARKE),</p>
 
 <p>The Cyber Hygiene scan results are attached for your review. Same password as before. (If this is your first report and you have yet to receive a password, please let us know.)</p>
 
@@ -169,10 +175,13 @@ Cybersecurity and Infrastructure Security Agency<br>
         to = ["recipient@example.com", "recipient2@example.com"]
         pdf = "./tests/data/pdf-sample.pdf"
         entity_acronym = "CLARKE"
+        entity_name = "Clarke of Kent"
         report_date = "December 15, 2001"
         tech_pocs = [{"name": "Cixin Liu", "email": "cixin@liu.com"}]
 
-        message = CyhyMessage(to, pdf, entity_acronym, report_date, tech_pocs)
+        message = CyhyMessage(
+            to, pdf, entity_acronym, entity_name, report_date, tech_pocs
+        )
 
         self.assertEqual(message["From"], "reports@cyber.dhs.gov")
         self.assertEqual(
@@ -193,7 +202,7 @@ Cybersecurity and Infrastructure Security Agency<br>
                 self.assertEqual(part.get_payload(decode=True), bytes)
                 self.assertEqual(part.get_filename(), "pdf-sample.pdf")
             elif part.get_content_type() == "text/plain":
-                body = """Greetings CLARKE,
+                body = """Greetings Clarke of Kent (CLARKE),
 
 The Cyber Hygiene scan results are attached for your review. Same password as before. (If this is your first report and you have yet to receive a password, please let us know.)
 
@@ -218,7 +227,7 @@ WARNING: This document is FOR OFFICIAL USE ONLY (FOUO). It contains information 
                 html_body = """<html>
 <head></head>
 <body>
-<p>Greetings CLARKE,</p>
+<p>Greetings Clarke of Kent (CLARKE),</p>
 
 <p>The Cyber Hygiene scan results are attached for your review. Same password as before. (If this is your first report and you have yet to receive a password, please let us know.)</p>
 
@@ -252,6 +261,7 @@ Cybersecurity and Infrastructure Security Agency<br>
         cc = ["cc@example.com"]
         bcc = ["bcc@example.com"]
         entity_acronym = "CLARKE"
+        entity_name = "Clarke of Kent"
         report_date = "December 15, 2001"
         tech_pocs = [{"name": "Cixin Liu", "email": "cixin@liu.com"}]
 
@@ -259,6 +269,7 @@ Cybersecurity and Infrastructure Security Agency<br>
             to,
             pdf,
             entity_acronym,
+            entity_name,
             report_date,
             tech_pocs,
             from_addr=fm,
@@ -285,7 +296,7 @@ Cybersecurity and Infrastructure Security Agency<br>
                 self.assertEqual(part.get_payload(decode=True), bytes)
                 self.assertEqual(part.get_filename(), "pdf-sample.pdf")
             elif part.get_content_type() == "text/plain":
-                body = """Greetings CLARKE,
+                body = """Greetings Clarke of Kent (CLARKE),
 
 The Cyber Hygiene scan results are attached for your review. Same password as before. (If this is your first report and you have yet to receive a password, please let us know.)
 
@@ -310,7 +321,7 @@ WARNING: This document is FOR OFFICIAL USE ONLY (FOUO). It contains information 
                 html_body = """<html>
 <head></head>
 <body>
-<p>Greetings CLARKE,</p>
+<p>Greetings Clarke of Kent (CLARKE),</p>
 
 <p>The Cyber Hygiene scan results are attached for your review. Same password as before. (If this is your first report and you have yet to receive a password, please let us know.)</p>
 
@@ -344,6 +355,7 @@ Cybersecurity and Infrastructure Security Agency<br>
         cc = ["cc@example.com", "cc2@example.com"]
         bcc = ["bcc@example.com", "bcc2@example.com"]
         entity_acronym = "CLARKE"
+        entity_name = "Clarke of Kent"
         report_date = "December 15, 2001"
         tech_pocs = [{"name": "Cixin Liu", "email": "cixin@liu.com"}]
 
@@ -351,6 +363,7 @@ Cybersecurity and Infrastructure Security Agency<br>
             to,
             pdf,
             entity_acronym,
+            entity_name,
             report_date,
             tech_pocs,
             from_addr=fm,
@@ -377,7 +390,7 @@ Cybersecurity and Infrastructure Security Agency<br>
                 self.assertEqual(part.get_payload(decode=True), bytes)
                 self.assertEqual(part.get_filename(), "pdf-sample.pdf")
             elif part.get_content_type() == "text/plain":
-                body = """Greetings CLARKE,
+                body = """Greetings Clarke of Kent (CLARKE),
 
 The Cyber Hygiene scan results are attached for your review. Same password as before. (If this is your first report and you have yet to receive a password, please let us know.)
 
@@ -402,7 +415,7 @@ WARNING: This document is FOR OFFICIAL USE ONLY (FOUO). It contains information 
                 html_body = """<html>
 <head></head>
 <body>
-<p>Greetings CLARKE,</p>
+<p>Greetings Clarke of Kent (CLARKE),</p>
 
 <p>The Cyber Hygiene scan results are attached for your review. Same password as before. (If this is your first report and you have yet to receive a password, please let us know.)</p>
 

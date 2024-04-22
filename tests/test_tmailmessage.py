@@ -15,9 +15,10 @@ class Test(unittest.TestCase):
         to = ["recipient@example.com"]
         pdf = "./tests/data/pdf-sample.pdf"
         entity_acronym = "CLARKE"
+        entity_name = "Clarke of Kent"
         report_date = "December 15, 2001"
 
-        message = TmailMessage(to, pdf, entity_acronym, report_date)
+        message = TmailMessage(to, pdf, entity_acronym, entity_name, report_date)
 
         self.assertEqual(message["From"], "reports@cyber.dhs.gov")
         self.assertEqual(
@@ -38,7 +39,7 @@ class Test(unittest.TestCase):
                 self.assertEqual(part.get_payload(decode=True), bytes)
                 self.assertEqual(part.get_filename(), "pdf-sample.pdf")
             elif part.get_content_type() == "text/plain":
-                text_body = """Greetings CLARKE,
+                text_body = """Greetings Clarke of Kent (CLARKE),
 
 Attached is your Trustworthy Email Report. This report presents your organization's support of SPF and DMARC, two email authentication standards, as published at your .gov domains. The data in this report comes from a scan that took place on December 15, 2001.
 
@@ -73,7 +74,7 @@ vulnerability@cisa.dhs.gov
 <head></head>
 <body>
 <div style=""font-size:14.5"">
-<p>Greetings CLARKE,</p>
+<p>Greetings Clarke of Kent (CLARKE),</p>
 <p>Attached is your <b>Trustworthy Email Report</b>. This report presents your organization's support of SPF and DMARC, two email authentication standards, as published at your .gov domains. The data in this report comes from a <b>scan that took place on December 15, 2001.</b></p>
 <p><a href="https://cyber.dhs.gov/bod/18-01/">CISA Binding Operational Directive 18-01</a> requires your agency to take certain actions relevant to the data in this report:</p>
 <ul>
@@ -107,9 +108,10 @@ Cybersecurity and Infrastructure Security Agency<br />
         to = ["recipient@example.com", "recipient2@example.com"]
         pdf = "./tests/data/pdf-sample.pdf"
         entity_acronym = "CLARKE"
+        entity_name = "Clarke of Kent"
         report_date = "December 15, 2001"
 
-        message = TmailMessage(to, pdf, entity_acronym, report_date)
+        message = TmailMessage(to, pdf, entity_acronym, entity_name, report_date)
 
         self.assertEqual(message["From"], "reports@cyber.dhs.gov")
         self.assertEqual(
@@ -130,7 +132,7 @@ Cybersecurity and Infrastructure Security Agency<br />
                 self.assertEqual(part.get_payload(decode=True), bytes)
                 self.assertEqual(part.get_filename(), "pdf-sample.pdf")
             elif part.get_content_type() == "text/plain":
-                body = """Greetings CLARKE,
+                body = """Greetings Clarke of Kent (CLARKE),
 
 Attached is your Trustworthy Email Report. This report presents your organization's support of SPF and DMARC, two email authentication standards, as published at your .gov domains. The data in this report comes from a scan that took place on December 15, 2001.
 
@@ -165,7 +167,7 @@ vulnerability@cisa.dhs.gov
 <head></head>
 <body>
 <div style=""font-size:14.5"">
-<p>Greetings CLARKE,</p>
+<p>Greetings Clarke of Kent (CLARKE),</p>
 <p>Attached is your <b>Trustworthy Email Report</b>. This report presents your organization's support of SPF and DMARC, two email authentication standards, as published at your .gov domains. The data in this report comes from a <b>scan that took place on December 15, 2001.</b></p>
 <p><a href="https://cyber.dhs.gov/bod/18-01/">CISA Binding Operational Directive 18-01</a> requires your agency to take certain actions relevant to the data in this report:</p>
 <ul>
@@ -202,12 +204,14 @@ Cybersecurity and Infrastructure Security Agency<br />
         cc = ["cc@example.com"]
         bcc = ["bcc@example.com"]
         entity_acronym = "CLARKE"
+        entity_name = "Clarke of Kent"
         report_date = "December 15, 2001"
 
         message = TmailMessage(
             to,
             pdf,
             entity_acronym,
+            entity_name,
             report_date,
             from_addr=fm,
             cc_addrs=cc,
@@ -233,7 +237,7 @@ Cybersecurity and Infrastructure Security Agency<br />
                 self.assertEqual(part.get_payload(decode=True), bytes)
                 self.assertEqual(part.get_filename(), "pdf-sample.pdf")
             elif part.get_content_type() == "text/plain":
-                body = """Greetings CLARKE,
+                body = """Greetings Clarke of Kent (CLARKE),
 
 Attached is your Trustworthy Email Report. This report presents your organization's support of SPF and DMARC, two email authentication standards, as published at your .gov domains. The data in this report comes from a scan that took place on December 15, 2001.
 
@@ -268,7 +272,7 @@ vulnerability@cisa.dhs.gov
 <head></head>
 <body>
 <div style=""font-size:14.5"">
-<p>Greetings CLARKE,</p>
+<p>Greetings Clarke of Kent (CLARKE),</p>
 <p>Attached is your <b>Trustworthy Email Report</b>. This report presents your organization's support of SPF and DMARC, two email authentication standards, as published at your .gov domains. The data in this report comes from a <b>scan that took place on December 15, 2001.</b></p>
 <p><a href="https://cyber.dhs.gov/bod/18-01/">CISA Binding Operational Directive 18-01</a> requires your agency to take certain actions relevant to the data in this report:</p>
 <ul>
@@ -305,12 +309,14 @@ Cybersecurity and Infrastructure Security Agency<br />
         cc = ["cc@example.com", "cc2@example.com"]
         bcc = ["bcc@example.com", "bcc2@example.com"]
         entity_acronym = "CLARKE"
+        entity_name = "Clarke of Kent"
         report_date = "December 15, 2001"
 
         message = TmailMessage(
             to,
             pdf,
             entity_acronym,
+            entity_name,
             report_date,
             from_addr=fm,
             cc_addrs=cc,
@@ -336,7 +342,7 @@ Cybersecurity and Infrastructure Security Agency<br />
                 self.assertEqual(part.get_payload(decode=True), bytes)
                 self.assertEqual(part.get_filename(), "pdf-sample.pdf")
             elif part.get_content_type() == "text/plain":
-                body = """Greetings CLARKE,
+                body = """Greetings Clarke of Kent (CLARKE),
 
 Attached is your Trustworthy Email Report. This report presents your organization's support of SPF and DMARC, two email authentication standards, as published at your .gov domains. The data in this report comes from a scan that took place on December 15, 2001.
 
@@ -371,7 +377,7 @@ vulnerability@cisa.dhs.gov
 <head></head>
 <body>
 <div style=""font-size:14.5"">
-<p>Greetings CLARKE,</p>
+<p>Greetings Clarke of Kent (CLARKE),</p>
 <p>Attached is your <b>Trustworthy Email Report</b>. This report presents your organization's support of SPF and DMARC, two email authentication standards, as published at your .gov domains. The data in this report comes from a <b>scan that took place on December 15, 2001.</b></p>
 <p><a href="https://cyber.dhs.gov/bod/18-01/">CISA Binding Operational Directive 18-01</a> requires your agency to take certain actions relevant to the data in this report:</p>
 <ul>

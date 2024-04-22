@@ -15,11 +15,12 @@ class Test(unittest.TestCase):
         to = ["recipient@example.com"]
         pdf = "./tests/data/pdf-sample.pdf"
         entity_acronym = "FEDTEST"
+        entity_name = "Federal Test"
         is_federal = True
         report_date = "December 15, 2001"
 
         message = CyhyNotificationMessage(
-            to, pdf, entity_acronym, is_federal, report_date
+            to, pdf, entity_acronym, entity_name, is_federal, report_date
         )
 
         self.assertEqual(message["From"], "reports@cyber.dhs.gov")
@@ -41,7 +42,7 @@ class Test(unittest.TestCase):
                 self.assertEqual(part.get_payload(decode=True), bytes)
                 self.assertEqual(part.get_filename(), "pdf-sample.pdf")
             elif part.get_content_type() == "text/plain":
-                text_body = """Greetings FEDTEST,
+                text_body = """Greetings Federal Test (FEDTEST),
 
 Cyber Hygiene scans of your host(s) conducted in the past day have detected one or more of the following:
 * New critical, high, and/or known exploited vulnerabilities
@@ -71,7 +72,7 @@ WARNING: This message and any attached document(s) is FOR OFFICIAL USE ONLY (FOU
                 html_body = """<html>
 <head></head>
 <body>
-<p>Greetings FEDTEST,</p>
+<p>Greetings Federal Test (FEDTEST),</p>
 
 <p>Cyber Hygiene scans of your host(s) conducted in the past day have detected one or more of the following:
 <ul>
@@ -108,11 +109,12 @@ Cybersecurity and Infrastructure Security Agency<br>
         to = ["recipient@example.com", "recipient2@example.com"]
         pdf = "./tests/data/pdf-sample.pdf"
         entity_acronym = "FEDTEST"
+        entity_name = "Federal Test"
         is_federal = True
         report_date = "December 15, 2001"
 
         message = CyhyNotificationMessage(
-            to, pdf, entity_acronym, is_federal, report_date
+            to, pdf, entity_acronym, entity_name, is_federal, report_date
         )
 
         self.assertEqual(message["From"], "reports@cyber.dhs.gov")
@@ -134,7 +136,7 @@ Cybersecurity and Infrastructure Security Agency<br>
                 self.assertEqual(part.get_payload(decode=True), bytes)
                 self.assertEqual(part.get_filename(), "pdf-sample.pdf")
             elif part.get_content_type() == "text/plain":
-                body = """Greetings FEDTEST,
+                body = """Greetings Federal Test (FEDTEST),
 
 Cyber Hygiene scans of your host(s) conducted in the past day have detected one or more of the following:
 * New critical, high, and/or known exploited vulnerabilities
@@ -164,7 +166,7 @@ WARNING: This message and any attached document(s) is FOR OFFICIAL USE ONLY (FOU
                 html_body = """<html>
 <head></head>
 <body>
-<p>Greetings FEDTEST,</p>
+<p>Greetings Federal Test (FEDTEST),</p>
 
 <p>Cyber Hygiene scans of your host(s) conducted in the past day have detected one or more of the following:
 <ul>
@@ -204,6 +206,7 @@ Cybersecurity and Infrastructure Security Agency<br>
         cc = ["cc@example.com"]
         bcc = ["bcc@example.com"]
         entity_acronym = "FEDTEST"
+        entity_name = "Federal Test"
         is_federal = True
         report_date = "December 15, 2001"
 
@@ -211,6 +214,7 @@ Cybersecurity and Infrastructure Security Agency<br>
             to,
             pdf,
             entity_acronym,
+            entity_name,
             is_federal,
             report_date,
             from_addr=fm,
@@ -237,7 +241,7 @@ Cybersecurity and Infrastructure Security Agency<br>
                 self.assertEqual(part.get_payload(decode=True), bytes)
                 self.assertEqual(part.get_filename(), "pdf-sample.pdf")
             elif part.get_content_type() == "text/plain":
-                body = """Greetings FEDTEST,
+                body = """Greetings Federal Test (FEDTEST),
 
 Cyber Hygiene scans of your host(s) conducted in the past day have detected one or more of the following:
 * New critical, high, and/or known exploited vulnerabilities
@@ -267,7 +271,7 @@ WARNING: This message and any attached document(s) is FOR OFFICIAL USE ONLY (FOU
                 html_body = """<html>
 <head></head>
 <body>
-<p>Greetings FEDTEST,</p>
+<p>Greetings Federal Test (FEDTEST),</p>
 
 <p>Cyber Hygiene scans of your host(s) conducted in the past day have detected one or more of the following:
 <ul>
@@ -307,6 +311,7 @@ Cybersecurity and Infrastructure Security Agency<br>
         cc = ["cc@example.com", "cc2@example.com"]
         bcc = ["bcc@example.com", "bcc2@example.com"]
         entity_acronym = "FEDTEST"
+        entity_name = "Federal Test"
         is_federal = True
         report_date = "December 15, 2001"
 
@@ -314,6 +319,7 @@ Cybersecurity and Infrastructure Security Agency<br>
             to,
             pdf,
             entity_acronym,
+            entity_name,
             is_federal,
             report_date,
             from_addr=fm,
@@ -340,7 +346,7 @@ Cybersecurity and Infrastructure Security Agency<br>
                 self.assertEqual(part.get_payload(decode=True), bytes)
                 self.assertEqual(part.get_filename(), "pdf-sample.pdf")
             elif part.get_content_type() == "text/plain":
-                body = """Greetings FEDTEST,
+                body = """Greetings Federal Test (FEDTEST),
 
 Cyber Hygiene scans of your host(s) conducted in the past day have detected one or more of the following:
 * New critical, high, and/or known exploited vulnerabilities
@@ -370,7 +376,7 @@ WARNING: This message and any attached document(s) is FOR OFFICIAL USE ONLY (FOU
                 html_body = """<html>
 <head></head>
 <body>
-<p>Greetings FEDTEST,</p>
+<p>Greetings Federal Test (FEDTEST),</p>
 
 <p>Cyber Hygiene scans of your host(s) conducted in the past day have detected one or more of the following:
 <ul>
@@ -407,11 +413,12 @@ Cybersecurity and Infrastructure Security Agency<br>
         to = ["recipient@example.com"]
         pdf = "./tests/data/pdf-sample.pdf"
         entity_acronym = "NONFEDTEST"
+        entity_name = "Non-Federal Test"
         is_federal = False
         report_date = "December 15, 2001"
 
         message = CyhyNotificationMessage(
-            to, pdf, entity_acronym, is_federal, report_date
+            to, pdf, entity_acronym, entity_name, is_federal, report_date
         )
 
         self.assertEqual(message["From"], "reports@cyber.dhs.gov")
@@ -433,7 +440,7 @@ Cybersecurity and Infrastructure Security Agency<br>
                 self.assertEqual(part.get_payload(decode=True), bytes)
                 self.assertEqual(part.get_filename(), "pdf-sample.pdf")
             elif part.get_content_type() == "text/plain":
-                text_body = """Greetings NONFEDTEST,
+                text_body = """Greetings Non-Federal Test (NONFEDTEST),
 
 Cyber Hygiene scans of your host(s) conducted in the past day have detected one or more of the following:
 * New critical, high, and/or known exploited vulnerabilities
@@ -463,7 +470,7 @@ WARNING: This message and any attached document(s) is FOR OFFICIAL USE ONLY (FOU
                 html_body = """<html>
 <head></head>
 <body>
-<p>Greetings NONFEDTEST,</p>
+<p>Greetings Non-Federal Test (NONFEDTEST),</p>
 
 <p>Cyber Hygiene scans of your host(s) conducted in the past day have detected one or more of the following:
 <ul>
@@ -500,11 +507,12 @@ Cybersecurity and Infrastructure Security Agency<br>
         to = ["recipient@example.com", "recipient2@example.com"]
         pdf = "./tests/data/pdf-sample.pdf"
         entity_acronym = "NONFEDTEST"
+        entity_name = "Non-Federal Test"
         is_federal = False
         report_date = "December 15, 2001"
 
         message = CyhyNotificationMessage(
-            to, pdf, entity_acronym, is_federal, report_date
+            to, pdf, entity_acronym, entity_name, is_federal, report_date
         )
 
         self.assertEqual(message["From"], "reports@cyber.dhs.gov")
@@ -526,7 +534,7 @@ Cybersecurity and Infrastructure Security Agency<br>
                 self.assertEqual(part.get_payload(decode=True), bytes)
                 self.assertEqual(part.get_filename(), "pdf-sample.pdf")
             elif part.get_content_type() == "text/plain":
-                body = """Greetings NONFEDTEST,
+                body = """Greetings Non-Federal Test (NONFEDTEST),
 
 Cyber Hygiene scans of your host(s) conducted in the past day have detected one or more of the following:
 * New critical, high, and/or known exploited vulnerabilities
@@ -556,7 +564,7 @@ WARNING: This message and any attached document(s) is FOR OFFICIAL USE ONLY (FOU
                 html_body = """<html>
 <head></head>
 <body>
-<p>Greetings NONFEDTEST,</p>
+<p>Greetings Non-Federal Test (NONFEDTEST),</p>
 
 <p>Cyber Hygiene scans of your host(s) conducted in the past day have detected one or more of the following:
 <ul>
@@ -596,6 +604,7 @@ Cybersecurity and Infrastructure Security Agency<br>
         cc = ["cc@example.com"]
         bcc = ["bcc@example.com"]
         entity_acronym = "NONFEDTEST"
+        entity_name = "Non-Federal Test"
         is_federal = False
         report_date = "December 15, 2001"
 
@@ -603,6 +612,7 @@ Cybersecurity and Infrastructure Security Agency<br>
             to,
             pdf,
             entity_acronym,
+            entity_name,
             is_federal,
             report_date,
             from_addr=fm,
@@ -629,7 +639,7 @@ Cybersecurity and Infrastructure Security Agency<br>
                 self.assertEqual(part.get_payload(decode=True), bytes)
                 self.assertEqual(part.get_filename(), "pdf-sample.pdf")
             elif part.get_content_type() == "text/plain":
-                body = """Greetings NONFEDTEST,
+                body = """Greetings Non-Federal Test (NONFEDTEST),
 
 Cyber Hygiene scans of your host(s) conducted in the past day have detected one or more of the following:
 * New critical, high, and/or known exploited vulnerabilities
@@ -659,7 +669,7 @@ WARNING: This message and any attached document(s) is FOR OFFICIAL USE ONLY (FOU
                 html_body = """<html>
 <head></head>
 <body>
-<p>Greetings NONFEDTEST,</p>
+<p>Greetings Non-Federal Test (NONFEDTEST),</p>
 
 <p>Cyber Hygiene scans of your host(s) conducted in the past day have detected one or more of the following:
 <ul>
@@ -699,6 +709,7 @@ Cybersecurity and Infrastructure Security Agency<br>
         cc = ["cc@example.com", "cc2@example.com"]
         bcc = ["bcc@example.com", "bcc2@example.com"]
         entity_acronym = "NONFEDTEST"
+        entity_name = "Non-Federal Test"
         is_federal = False
         report_date = "December 15, 2001"
 
@@ -706,6 +717,7 @@ Cybersecurity and Infrastructure Security Agency<br>
             to,
             pdf,
             entity_acronym,
+            entity_name,
             is_federal,
             report_date,
             from_addr=fm,
@@ -732,7 +744,7 @@ Cybersecurity and Infrastructure Security Agency<br>
                 self.assertEqual(part.get_payload(decode=True), bytes)
                 self.assertEqual(part.get_filename(), "pdf-sample.pdf")
             elif part.get_content_type() == "text/plain":
-                body = """Greetings NONFEDTEST,
+                body = """Greetings Non-Federal Test (NONFEDTEST),
 
 Cyber Hygiene scans of your host(s) conducted in the past day have detected one or more of the following:
 * New critical, high, and/or known exploited vulnerabilities
@@ -762,7 +774,7 @@ WARNING: This message and any attached document(s) is FOR OFFICIAL USE ONLY (FOU
                 html_body = """<html>
 <head></head>
 <body>
-<p>Greetings NONFEDTEST,</p>
+<p>Greetings Non-Federal Test (NONFEDTEST),</p>
 
 <p>Cyber Hygiene scans of your host(s) conducted in the past day have detected one or more of the following:
 <ul>
