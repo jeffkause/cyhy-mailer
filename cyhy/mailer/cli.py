@@ -229,6 +229,7 @@ def get_requests_raw(db, query, batch_size=None):
         "agency.contacts.name": True,
         "agency.contacts.type": True,
         "agency.location.state": True,
+        "agency.name": True,
         "agency.type": True,
     }
 
@@ -445,6 +446,7 @@ def send_bod_reports(
     for request in bod_requests:
         id = request["_id"]
         acronym = request["agency"]["acronym"]
+        entity_name = request["agency"]["name"]
 
         to_emails = get_emails_from_request(request)
         # to_emails should contain at least one email
@@ -495,7 +497,11 @@ def send_bod_reports(
 
                 # Construct the Tmail message to send
                 message = TmailMessage(
-                    to_emails, tmail_attachment_filename, acronym, report_date
+                    to_emails,
+                    tmail_attachment_filename,
+                    acronym,
+                    entity_name,
+                    report_date,
                 )
 
                 try:
@@ -551,7 +557,11 @@ def send_bod_reports(
 
                 # Construct the HTTPS message to send
                 message = HttpsMessage(
-                    to_emails, https_attachment_filename, acronym, report_date
+                    to_emails,
+                    https_attachment_filename,
+                    acronym,
+                    entity_name,
+                    report_date,
                 )
 
                 try:
@@ -786,6 +796,7 @@ def send_cyhy_reports(
         for request in cyhy_requests:
             id = request["_id"]
             acronym = request["agency"]["acronym"]
+            entity_name = request["agency"]["name"]
             technical_pocs = [
                 contact
                 for contact in request["agency"]["contacts"]
@@ -871,6 +882,7 @@ def send_cyhy_reports(
                     to_emails,
                     cyhy_attachment_filename,
                     acronym,
+                    entity_name,
                     report_date,
                     technical_pocs,
                     bcc_addrs=bcc_addrs,
@@ -1016,6 +1028,7 @@ def send_cyhy_notifications(
     for request in cyhy_requests:
         id = request["_id"]
         acronym = request["agency"]["acronym"]
+        entity_name = request["agency"]["name"]
         is_federal = id in fed_orgs
 
         to_emails = get_emails_from_request(request)
@@ -1093,6 +1106,7 @@ def send_cyhy_notifications(
                     to_emails,
                     cyhy_notification_attachment_filename,
                     acronym,
+                    entity_name,
                     is_federal,
                     notification_date,
                     bcc_addrs=bcc_addrs,
