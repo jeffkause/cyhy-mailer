@@ -143,8 +143,8 @@ Cybersecurity and Infrastructure Security Agency<br>
         # This is the data mustache will use to render the templates
         mustache_data = {
             "acronym": entity_acronym,
-            "name": entity_name,
             "is_federal": is_federal,
+            "name": entity_name,
             "report_date": report_date,
         }
 

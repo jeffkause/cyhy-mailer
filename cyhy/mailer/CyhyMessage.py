@@ -145,9 +145,9 @@ Cybersecurity and Infrastructure Security Agency<br>
         # This is the data mustache will use to render the templates
         mustache_data = {
             "acronym": entity_acronym,
+            "has_tech_pocs": len(tech_pocs) != 0,
             "name": entity_name,
             "report_date": report_date,
-            "has_tech_pocs": len(tech_pocs) != 0,
             "tech_pocs": tech_pocs,
         }
 
