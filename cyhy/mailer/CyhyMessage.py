@@ -29,7 +29,7 @@ class CyhyMessage(ReportMessage):
 
     Subject = "{{acronym}} - Cyber Hygiene Report - {{report_date}} Results"
 
-    TextBody = """Greetings {{acronym}},
+    TextBody = """Greetings {{name}} ({{acronym}}),
 
 The Cyber Hygiene scan results are attached for your review. Same password as before. (If this is your first report and you have yet to receive a password, please let us know.)
 
@@ -57,7 +57,7 @@ WARNING: This document is FOR OFFICIAL USE ONLY (FOUO). It contains information 
     HtmlBody = """<html>
 <head></head>
 <body>
-<p>Greetings {{acronym}},</p>
+<p>Greetings {{name}} ({{acronym}}),</p>
 
 <p>The Cyber Hygiene scan results are attached for your review. Same password as before. (If this is your first report and you have yet to receive a password, please let us know.)</p>
 
@@ -91,6 +91,7 @@ Cybersecurity and Infrastructure Security Agency<br>
         to_addrs,
         pdf_filename,
         entity_acronym,
+        entity_name,
         report_date,
         tech_pocs,
         from_addr=Message.DefaultFrom,
@@ -112,6 +113,10 @@ Cybersecurity and Infrastructure Security Agency<br>
         entity_acronym : str
             The acronym used by the entity corresponding to the CYHY
             report attachment.
+
+        entity_name : str
+            The name of the entity corresponding to the CYHY report
+            attachment.
 
         report_date : str
             The date corresponding to the CYHY report attachment.  We
@@ -140,8 +145,9 @@ Cybersecurity and Infrastructure Security Agency<br>
         # This is the data mustache will use to render the templates
         mustache_data = {
             "acronym": entity_acronym,
-            "report_date": report_date,
             "has_tech_pocs": len(tech_pocs) != 0,
+            "name": entity_name,
+            "report_date": report_date,
             "tech_pocs": tech_pocs,
         }
 

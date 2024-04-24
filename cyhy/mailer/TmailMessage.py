@@ -29,7 +29,7 @@ class TmailMessage(ReportMessage):
 
     Subject = "{{acronym}} - Trustworthy Email Report - {{report_date}} Results"
 
-    TextBody = """Greetings {{acronym}},
+    TextBody = """Greetings {{name}} ({{acronym}}),
 
 Attached is your Trustworthy Email Report. This report presents your organization's support of SPF and DMARC, two email authentication standards, as published at your .gov domains. The data in this report comes from a scan that took place on {{report_date}}.
 
@@ -63,7 +63,7 @@ vulnerability@cisa.dhs.gov
 <head></head>
 <body>
 <div style=""font-size:14.5"">
-<p>Greetings {{acronym}},</p>
+<p>Greetings {{name}} ({{acronym}}),</p>
 <p>Attached is your <b>Trustworthy Email Report</b>. This report presents your organization's support of SPF and DMARC, two email authentication standards, as published at your .gov domains. The data in this report comes from a <b>scan that took place on {{report_date}}.</b></p>
 <p><a href="https://cyber.dhs.gov/bod/18-01/">CISA Binding Operational Directive 18-01</a> requires your agency to take certain actions relevant to the data in this report:</p>
 <ul>
@@ -96,6 +96,7 @@ Cybersecurity and Infrastructure Security Agency<br />
         to_addrs,
         pdf_filename,
         entity_acronym,
+        entity_name,
         report_date,
         from_addr=Message.DefaultFrom,
         cc_addrs=Message.DefaultCc,
@@ -117,6 +118,10 @@ Cybersecurity and Infrastructure Security Agency<br />
             The acronym used by the entity corresponding to the
             Trustworthy Email report attachment.
 
+        entity_name : str
+            The name of the entity corresponding to the Trustworthy Email
+            report attachment.
+
         report_date : str
             The date corresponding to the Trustworthy Email report
             attachment.  We have been using dates of the form December
@@ -135,7 +140,11 @@ Cybersecurity and Infrastructure Security Agency<br />
 
         """
         # This is the data mustache will use to render the templates
-        mustache_data = {"acronym": entity_acronym, "report_date": report_date}
+        mustache_data = {
+            "acronym": entity_acronym,
+            "name": entity_name,
+            "report_date": report_date,
+        }
 
         # Render the templates
         subject = chevron.render(TmailMessage.Subject, mustache_data)

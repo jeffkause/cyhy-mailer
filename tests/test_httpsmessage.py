@@ -15,9 +15,10 @@ class Test(unittest.TestCase):
         to = ["recipient@example.com"]
         pdf = "./tests/data/pdf-sample.pdf"
         entity_acronym = "CLARKE"
+        entity_name = "Clarke of Kent"
         report_date = "December 15, 2001"
 
-        message = HttpsMessage(to, pdf, entity_acronym, report_date)
+        message = HttpsMessage(to, pdf, entity_acronym, entity_name, report_date)
 
         self.assertEqual(message["From"], "reports@cyber.dhs.gov")
         self.assertEqual(
@@ -37,7 +38,7 @@ class Test(unittest.TestCase):
                 self.assertEqual(part.get_payload(decode=True), bytes)
                 self.assertEqual(part.get_filename(), "pdf-sample.pdf")
             elif part.get_content_type() == "text/plain":
-                text_body = """Greetings CLARKE,
+                text_body = """Greetings Clarke of Kent (CLARKE),
 
 Attached is your latest HTTPS Report.
 
@@ -74,7 +75,7 @@ vulnerability@cisa.dhs.gov
 <head></head>
 <body>
 <div style=""font-size:14.5"">
-<p>Greetings CLARKE,</p>
+<p>Greetings Clarke of Kent (CLARKE),</p>
 <p>Attached is your latest HTTPS Report.</p>
 <p>This report is intended to assist your agency in complying with OMB <a href="https://https.cio.gov">M-15-13</a> and CISA <a href="https://cyber.dhs.gov/bod/18-01/">Binding Operational Directive 18-01</a>.</p>
 <p>This report includes all second-level .gov domains your agency owns and many known subdomains. Subdomains are gleaned from Cyber Hygiene scans, the General Services Administration's <a href="https://analytics.usa.gov/">Digital Analytics Program</a>, <a href=https://censys.io>Censys.io</a>, and data from the <a href="http://eotarchive.cdlib.org/">End of Term Web Archive</a>. The data in this report comes from a <b>scan that took place on December 15, 2001.</b></p>
@@ -108,9 +109,10 @@ Cybersecurity and Infrastructure Security Agency<br />
         to = ["recipient@example.com", "recipient2@example.com"]
         pdf = "./tests/data/pdf-sample.pdf"
         entity_acronym = "CLARKE"
+        entity_name = "Clarke of Kent"
         report_date = "December 15, 2001"
 
-        message = HttpsMessage(to, pdf, entity_acronym, report_date)
+        message = HttpsMessage(to, pdf, entity_acronym, entity_name, report_date)
 
         self.assertEqual(message["From"], "reports@cyber.dhs.gov")
         self.assertEqual(
@@ -130,7 +132,7 @@ Cybersecurity and Infrastructure Security Agency<br />
                 self.assertEqual(part.get_payload(decode=True), bytes)
                 self.assertEqual(part.get_filename(), "pdf-sample.pdf")
             elif part.get_content_type() == "text/plain":
-                body = """Greetings CLARKE,
+                body = """Greetings Clarke of Kent (CLARKE),
 
 Attached is your latest HTTPS Report.
 
@@ -167,7 +169,7 @@ vulnerability@cisa.dhs.gov
 <head></head>
 <body>
 <div style=""font-size:14.5"">
-<p>Greetings CLARKE,</p>
+<p>Greetings Clarke of Kent (CLARKE),</p>
 <p>Attached is your latest HTTPS Report.</p>
 <p>This report is intended to assist your agency in complying with OMB <a href="https://https.cio.gov">M-15-13</a> and CISA <a href="https://cyber.dhs.gov/bod/18-01/">Binding Operational Directive 18-01</a>.</p>
 <p>This report includes all second-level .gov domains your agency owns and many known subdomains. Subdomains are gleaned from Cyber Hygiene scans, the General Services Administration's <a href="https://analytics.usa.gov/">Digital Analytics Program</a>, <a href=https://censys.io>Censys.io</a>, and data from the <a href="http://eotarchive.cdlib.org/">End of Term Web Archive</a>. The data in this report comes from a <b>scan that took place on December 15, 2001.</b></p>
@@ -204,12 +206,14 @@ Cybersecurity and Infrastructure Security Agency<br />
         cc = ["cc@example.com"]
         bcc = ["bcc@example.com"]
         entity_acronym = "CLARKE"
+        entity_name = "Clarke of Kent"
         report_date = "December 15, 2001"
 
         message = HttpsMessage(
             to,
             pdf,
             entity_acronym,
+            entity_name,
             report_date,
             from_addr=fm,
             cc_addrs=cc,
@@ -234,7 +238,7 @@ Cybersecurity and Infrastructure Security Agency<br />
                 self.assertEqual(part.get_payload(decode=True), bytes)
                 self.assertEqual(part.get_filename(), "pdf-sample.pdf")
             elif part.get_content_type() == "text/plain":
-                body = """Greetings CLARKE,
+                body = """Greetings Clarke of Kent (CLARKE),
 
 Attached is your latest HTTPS Report.
 
@@ -271,7 +275,7 @@ vulnerability@cisa.dhs.gov
 <head></head>
 <body>
 <div style=""font-size:14.5"">
-<p>Greetings CLARKE,</p>
+<p>Greetings Clarke of Kent (CLARKE),</p>
 <p>Attached is your latest HTTPS Report.</p>
 <p>This report is intended to assist your agency in complying with OMB <a href="https://https.cio.gov">M-15-13</a> and CISA <a href="https://cyber.dhs.gov/bod/18-01/">Binding Operational Directive 18-01</a>.</p>
 <p>This report includes all second-level .gov domains your agency owns and many known subdomains. Subdomains are gleaned from Cyber Hygiene scans, the General Services Administration's <a href="https://analytics.usa.gov/">Digital Analytics Program</a>, <a href=https://censys.io>Censys.io</a>, and data from the <a href="http://eotarchive.cdlib.org/">End of Term Web Archive</a>. The data in this report comes from a <b>scan that took place on December 15, 2001.</b></p>
@@ -308,12 +312,14 @@ Cybersecurity and Infrastructure Security Agency<br />
         cc = ["cc@example.com", "cc2@example.com"]
         bcc = ["bcc@example.com", "bcc2@example.com"]
         entity_acronym = "CLARKE"
+        entity_name = "Clarke of Kent"
         report_date = "December 15, 2001"
 
         message = HttpsMessage(
             to,
             pdf,
             entity_acronym,
+            entity_name,
             report_date,
             from_addr=fm,
             cc_addrs=cc,
@@ -338,7 +344,7 @@ Cybersecurity and Infrastructure Security Agency<br />
                 self.assertEqual(part.get_payload(decode=True), bytes)
                 self.assertEqual(part.get_filename(), "pdf-sample.pdf")
             elif part.get_content_type() == "text/plain":
-                body = """Greetings CLARKE,
+                body = """Greetings Clarke of Kent (CLARKE),
 
 Attached is your latest HTTPS Report.
 
@@ -375,7 +381,7 @@ vulnerability@cisa.dhs.gov
 <head></head>
 <body>
 <div style=""font-size:14.5"">
-<p>Greetings CLARKE,</p>
+<p>Greetings Clarke of Kent (CLARKE),</p>
 <p>Attached is your latest HTTPS Report.</p>
 <p>This report is intended to assist your agency in complying with OMB <a href="https://https.cio.gov">M-15-13</a> and CISA <a href="https://cyber.dhs.gov/bod/18-01/">Binding Operational Directive 18-01</a>.</p>
 <p>This report includes all second-level .gov domains your agency owns and many known subdomains. Subdomains are gleaned from Cyber Hygiene scans, the General Services Administration's <a href="https://analytics.usa.gov/">Digital Analytics Program</a>, <a href=https://censys.io>Censys.io</a>, and data from the <a href="http://eotarchive.cdlib.org/">End of Term Web Archive</a>. The data in this report comes from a <b>scan that took place on December 15, 2001.</b></p>

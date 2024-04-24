@@ -29,7 +29,7 @@ class HttpsMessage(ReportMessage):
 
     Subject = "{{acronym}} - HTTPS Report - {{report_date}} Results"
 
-    TextBody = """Greetings {{acronym}},
+    TextBody = """Greetings {{name}} ({{acronym}}),
 
 Attached is your latest HTTPS Report.
 
@@ -65,7 +65,7 @@ vulnerability@cisa.dhs.gov
 <head></head>
 <body>
 <div style=""font-size:14.5"">
-<p>Greetings {{acronym}},</p>
+<p>Greetings {{name}} ({{acronym}}),</p>
 <p>Attached is your latest HTTPS Report.</p>
 <p>This report is intended to assist your agency in complying with OMB <a href="https://https.cio.gov">M-15-13</a> and CISA <a href="https://cyber.dhs.gov/bod/18-01/">Binding Operational Directive 18-01</a>.</p>
 <p>This report includes all second-level .gov domains your agency owns and many known subdomains. Subdomains are gleaned from Cyber Hygiene scans, the General Services Administration's <a href="https://analytics.usa.gov/">Digital Analytics Program</a>, <a href=https://censys.io>Censys.io</a>, and data from the <a href="http://eotarchive.cdlib.org/">End of Term Web Archive</a>. The data in this report comes from a <b>scan that took place on {{report_date}}.</b></p>
@@ -98,6 +98,7 @@ Cybersecurity and Infrastructure Security Agency<br />
         to_addrs,
         pdf_filename,
         entity_acronym,
+        entity_name,
         report_date,
         from_addr=Message.DefaultFrom,
         cc_addrs=Message.DefaultCc,
@@ -119,6 +120,10 @@ Cybersecurity and Infrastructure Security Agency<br />
             The acronym used by the entity corresponding to the
             Trustworthy Email report attachment.
 
+        entity_name : str
+            The name of the entity corresponding to the Trustworthy Email
+            report attachment.
+
         report_date : str
             The date corresponding to the Trustworthy Email report
             attachment.  We have been using dates of the form December
@@ -137,7 +142,11 @@ Cybersecurity and Infrastructure Security Agency<br />
 
         """
         # This is the data mustache will use to render the templates
-        mustache_data = {"acronym": entity_acronym, "report_date": report_date}
+        mustache_data = {
+            "acronym": entity_acronym,
+            "name": entity_name,
+            "report_date": report_date,
+        }
 
         # Render the templates
         subject = chevron.render(HttpsMessage.Subject, mustache_data)

@@ -29,7 +29,7 @@ class CyhyNotificationMessage(ReportMessage):
 
     Subject = "{{acronym}} - Cyber Hygiene Alert - {{report_date}}"
 
-    TextBody = """Greetings {{acronym}},
+    TextBody = """Greetings {{name}} ({{acronym}}),
 
 Cyber Hygiene scans of your host(s) conducted in the past day have detected one or more of the following:
 * New critical, high, and/or known exploited vulnerabilities
@@ -58,7 +58,7 @@ WARNING: This message and any attached document(s) is FOR OFFICIAL USE ONLY (FOU
     HtmlBody = """<html>
 <head></head>
 <body>
-<p>Greetings {{acronym}},</p>
+<p>Greetings {{name}} ({{acronym}}),</p>
 
 <p>Cyber Hygiene scans of your host(s) conducted in the past day have detected one or more of the following:
 <ul>
@@ -94,6 +94,7 @@ Cybersecurity and Infrastructure Security Agency<br>
         to_addrs,
         pdf_filename,
         entity_acronym,
+        entity_name,
         is_federal,
         report_date,
         from_addr=Message.DefaultFrom,
@@ -115,6 +116,10 @@ Cybersecurity and Infrastructure Security Agency<br>
         entity_acronym : str
             The acronym used by the entity corresponding to the CYHY
             notification attachment.
+
+        entity_name : str
+            The name of the entity corresponding to the CYHY notification
+            attachment.
 
         is_federal : bool
             True if the entity is Federal, otherwise False.
@@ -139,6 +144,7 @@ Cybersecurity and Infrastructure Security Agency<br>
         mustache_data = {
             "acronym": entity_acronym,
             "is_federal": is_federal,
+            "name": entity_name,
             "report_date": report_date,
         }
 
